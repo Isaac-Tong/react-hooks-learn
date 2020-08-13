@@ -3,6 +3,8 @@ const Accordion = require("./components/Accordion");
 const Search = require("./components/Search");
 const Dropdown = require("./components/Dropdown");
 const Translate = require('./components/Translate')
+const Route = require('./components/Route')
+const Header = require('./components/Header')
 
 const items = [
     {
@@ -34,10 +36,6 @@ const options = [
     },
 ];
 
-
-
-
-
 const App = () => {
     const [selected, setSelected] = React.useState(options[0]);
 
@@ -45,9 +43,20 @@ const App = () => {
 
     return (
         <div>
-            <Translate></Translate>
+            <Header></Header>
+            <Route path="/translate">
+                <Translate></Translate>
+            </Route>
+            <Route path="/list">
+                <Search></Search>
+            </Route>
+            <Route path="/">
+                <Accordion items={items}></Accordion>
+            </Route>
         </div>
     );
 };
+
+
 
 module.exports = App;
